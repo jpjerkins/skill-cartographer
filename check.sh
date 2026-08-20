@@ -47,6 +47,17 @@ check "CHART.md defines frontier and eligible"  'grep -q "frontier" CHART.md && 
 check "CHART.md constrains blocking edges"      'grep -qi "blocking edges" CHART.md'
 check "CHART.md is within its sprawl cap"       '[ "$(wc -l < CHART.md)" -le 140 ]'
 
+# --- Task 5: PREP.md ---
+check "PREP.md states the variation rule"        'grep -qi "radical variation" PREP.md'
+check "PREP.md names both failure modes"         'grep -qi "wallpaper" PREP.md && grep -qi "uninterpretable" PREP.md'
+check "PREP.md states the variant cap"           'grep -q "5 variants" PREP.md'
+check "PREP.md has a four-step escalation"       '[ "$(grep -c "^[1-4]\. \*\*" PREP.md)" -ge 4 ]'
+check "PREP.md names fog wearing a ticket"       'grep -qi "wearing a ticket" PREP.md'
+check "PREP.md defines the reaction prompt"      'grep -qi "reaction prompt" PREP.md'
+check "PREP.md lists prototype constraints"      'grep -qi "prototype constraints" PREP.md'
+check "PREP.md gives probe sizing in minutes"    'grep -q "5 minutes" PREP.md'
+check "PREP.md is within its sprawl cap"         '[ "$(wc -l < PREP.md)" -le 140 ]'
+
 echo "---"
 if [ "$fails" -eq 0 ]; then echo "all checks passed"; else echo "$fails check(s) failed"; fi
 exit $([ "$fails" -eq 0 ] && echo 0 || echo 1)
