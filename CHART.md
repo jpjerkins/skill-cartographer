@@ -1,0 +1,87 @@
+# CHART.md — chart and ticket format
+
+Read this at Chart time, and whenever you write to the chart.
+
+## The chart body
+
+Wayfinder's map — destination, *Not yet specified*, *Out of scope*, `Decisions
+so far` — plus two sections unique to this chart.
+
+- **Oracle** — who the authority actually is. Whether the person in the
+  session is them or a proxy (including "I am a proxy for what I'll want once
+  I see it"). Contact cadence and a realistic budget **in minutes**. A
+  **tiebreaker line** naming who decides when the room splits. If nobody holds
+  that authority, "who decides this" becomes its own ticket.
+- **Sounding shape** — chosen once, from oracle reachability: live app with a
+  variant switcher | self-contained shareable file | published artifact.
+  Changing it later is a scoping act, not a formatting tweak.
+
+## Decision lines
+
+Each `Decisions so far` line carries a provenance tag and one or two subject
+tags. See `SKILL.md` for what the three tags mean and how to earn each one.
+
+For `sounded` lines only, carry **both** links: the variant set that produced
+the reaction (evidence) and the commit or PR that embodies it (embodiment).
+Bidirectional linkage makes a later reversal tractable instead of
+archaeological.
+
+## Fog
+
+Fog patches in *Not yet specified* name the ticket(s) that would sharpen them,
+written when that ticket is created. Fog isn't a ticket, so it cannot hold a
+native relation — this is the one place a body convention is used.
+
+## Tickets
+
+### Kinds
+
+- **probe** — two or more working alternatives side by side reveal the
+  answer. Costs a Prep session plus minutes of oracle contact budget.
+- **question** — sharp, but no comparison would reveal anything. Just ask.
+  Costs seconds. Resolves to `predicted`.
+- **research** — AFK investigation, no oracle contact.
+- **task** — has an owner, agent or human. Human-owned tasks are handed over
+  as a precise checklist.
+
+probe-vs-question is a fork **at the ticket level**, not a rung between fog
+and ticket: fog/ticket is about *sharpness*; probe/question is about *what
+resolves it*.
+
+### Ticket shape
+
+`## Question` + `## Reaction needed`, the latter phrased as what a comparison
+between variants would reveal — never as something you could just ask. Record
+which oracle role must react to the ticket, and its assumptions, with any
+load-bearing assumptions marked.
+
+### States
+
+`open` → `prepped` → `closed`.
+
+### Queries
+
+- **frontier** = open, unclaimed, not prepped → what a Prep session may take.
+- **eligible** = `prepped` and its required oracle will be present → Brief's
+  input.
+
+## Blocking edges
+
+Use the tracker's native dependency relation.
+
+> Blocking edges express only that work must complete before a ticket is
+> workable. They **never** express that one decision must precede another —
+> that's fog, and encoding it as a blocking edge is a worse copy of the fog
+> mechanism.
+
+A blocker may be the human's own to do.
+
+## Charting session order
+
+1. Name the destination.
+2. Write the fog.
+3. Fill the Oracle section.
+4. Pick the sounding shape.
+5. Create the tickets you can specify now.
+6. Wire blocking edges in a second pass — ids must exist before they can
+   reference each other.

@@ -37,6 +37,16 @@ check "SKILL.md points at PREP.md"                   'grep -q "PREP.md" SKILL.md
 check "SKILL.md points at BRIEF.md"                  'grep -q "BRIEF.md" SKILL.md'
 check "every pointed-at file exists"                 '( for f in $(grep -o "[A-Z]*\.md" SKILL.md | sort -u); do [ -f "$f" ] || exit 1; done )'
 
+# --- Task 4: CHART.md ---
+check "CHART.md defines the Oracle section"     'grep -q "Oracle" CHART.md'
+check "CHART.md defines the sounding shape"     'grep -qi "sounding shape" CHART.md'
+check "CHART.md names a tiebreaker"             'grep -qi "tiebreaker" CHART.md'
+check "CHART.md defines all four ticket kinds"  '[ "$(grep -c "^- \*\*probe\*\*\|^- \*\*question\*\*\|^- \*\*research\*\*\|^- \*\*task\*\*" CHART.md)" -eq 4 ]'
+check "CHART.md defines the three states"       'grep -q "prepped" CHART.md && grep -q "closed" CHART.md'
+check "CHART.md defines frontier and eligible"  'grep -q "frontier" CHART.md && grep -q "eligible" CHART.md'
+check "CHART.md constrains blocking edges"      'grep -qi "blocking edges" CHART.md'
+check "CHART.md is within its sprawl cap"       '[ "$(wc -l < CHART.md)" -le 140 ]'
+
 echo "---"
 if [ "$fails" -eq 0 ]; then echo "all checks passed"; else echo "$fails check(s) failed"; fi
 exit $([ "$fails" -eq 0 ] && echo 0 || echo 1)
