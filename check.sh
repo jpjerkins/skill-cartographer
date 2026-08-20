@@ -71,6 +71,17 @@ check "the template carries the room rules"     'grep -qi "advocate" BRIEF.md &&
 check "BRIEF.md handles nothing-eligible"       'grep -qi "nothing is eligible" BRIEF.md'
 check "BRIEF.md is within its sprawl cap"       '[ "$(wc -l < BRIEF.md)" -le 140 ]'
 
+# --- Task 7: Advance ---
+check "SKILL.md has an Advance section"           'grep -q "^## Advance" SKILL.md'
+check "Advance transcribes before interpreting"   'grep -qi "transcribe" SKILL.md'
+check "Advance refuses to average oracles"        'grep -qi "never average" SKILL.md'
+check "Advance processes breakers first"          'grep -qi "breakers first\|breaker.*first" SKILL.md'
+check "Advance classifies all five outcomes"      'grep -qi "composite" SKILL.md && grep -qi "none of these" SKILL.md && grep -qi "no discrimination" SKILL.md && grep -qi "not reached" SKILL.md'
+check "Advance carries the interview question"    'grep -qi "back tomorrow unchanged" SKILL.md'
+check "Advance rewrites rather than promotes"     'grep -qi "rewritten" SKILL.md'
+check "converging nothing is a success"           'grep -qi "converges nothing" SKILL.md'
+check "SKILL.md is within its sprawl cap"         '[ "$(wc -l < SKILL.md)" -le 200 ]'
+
 echo "---"
 if [ "$fails" -eq 0 ]; then echo "all checks passed"; else echo "$fails check(s) failed"; fi
 exit $([ "$fails" -eq 0 ] && echo 0 || echo 1)

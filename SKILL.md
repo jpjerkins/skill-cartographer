@@ -66,3 +66,44 @@ Ask in this order and take the first that applies.
 4. **Otherwise** → **Prep.** Read [`PREP.md`](PREP.md), take one ticket from the frontier.
 
 Sound is never your session. When a sounding is happening, you are not running.
+
+## Advance
+
+Advance is the only phase that contributes to main, via whatever the repo's
+process is — variant sets never target main at all. It is explicitly not one
+ticket per session: reactions arrive batched, so work through all of them.
+
+1. **Transcribe, don't interpret** — verbatim, attributed, hedges intact, before
+   any analysis. **When oracles disagree, never average**: the disagreement *is*
+   the finding, the sharpest form of the proxy problem; use the chart's
+   tiebreaker line ([`CHART.md`](CHART.md)). Resolve ambiguous async attribution
+   by asking, never by guessing.
+2. **Record and process breakers first** — a breaker winning is a bigger result
+   than any on-axis win because it voids the on-axis comparison entirely. Record
+   the assumption killed, discard the on-axis result even if one variant clearly
+   won, re-prep on corrected footing.
+3. **Classify each on-axis result** into one of five outcomes: one variant wins →
+   converge; **composite** → the axis has sub-structure, a structural finding
+   under controlled divergence, so converge the composite or split into two
+   probes; **"none of these"** → the question was wrong, so re-ticket and record
+   what the framing missed; **no discrimination** → the probe failed, don't tag,
+   diagnose; **not reached** → normal, stays `prepped`, rides to the next Brief,
+   priority rises via decay, no diagnosis and no blame.
+4. **Interview on incomplete coverage** — ask rather than auto-classifying,
+   separating never reached / reached but sprawled / an hour spent settling
+   nothing. Ask verbatim: **"Would you take this same probe back tomorrow unchanged,
+   or does it need reframing?"**
+5. **Capture asks born in the room** — rare, and usually appearing during the
+   sounding rather than planned into the brief.
+6. **Converge** — rewrite the winner properly. Not promoted, rewritten: variants
+   carry prototype constraints ([`PREP.md`](PREP.md)) that must not reach
+   production. Repo standards and TDD re-engage here and only here. An Advance
+   session that converges nothing is a successful session — its output was a
+   correction to the chart.
+7. **Write the decision line** with both links and provenance and subject tags,
+   per [`CHART.md`](CHART.md).
+8. **Re-examine predictions on touch**, bounded to load-bearing predictions
+   sharing a subject.
+9. **Graduate fog, archive, close** — new tickets from what's now specifiable,
+   clear those patches from *Not yet specified*, variant sets become throwaway
+   branches linked from their tickets.
