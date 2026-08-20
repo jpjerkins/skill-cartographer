@@ -10,6 +10,12 @@ Its own session, after the last Prep before contact — never earlier, because
 eligibility depends on who is in the room. **Brief never builds.** A gap it
 finds is Prep's job and needs Prep's session.
 
+**Ask the human two things first, before anything else in the session: who is
+attending, and on what date.** Neither is derivable from the repo, and both are
+load-bearing — the oracle determines which `prepped` tickets are `eligible`
+(see `CHART.md`), and oracle plus date name the brief file. Guessing either
+produces an agenda aimed at somebody who isn't coming.
+
 ## Prioritization
 
 Rank `eligible` tickets (see `CHART.md`) by three checkable numbers:
@@ -71,8 +77,9 @@ line downward.
 
 ## The template
 
-Fill this in, commit it at `briefs/YYYY-MM-DD-<oracle>.md`, and carry it into
-the room. It carries the reaction prompt and breaker from `PREP.md`.
+Fill this in and commit it at `briefs/YYYY-MM-DD-<oracle>.md`; the human
+carries it into the room, since you are not there. It carries each probe's
+reaction prompt (see `PREP.md`) and the rules the room runs by.
 
 ```markdown
 # Brief — YYYY-MM-DD — <oracle>
@@ -110,7 +117,11 @@ use. Tell me which one annoys you, and where.
 
 ## Capture
 
-<The commonest case: notes typed in the room, no recording, no thread.
+<Written in the room or immediately after — never reconstructed days later,
+because memory paraphrases and the verbatim requirement is what the whole
+skill rests on.
+
+The commonest case: notes typed in the room, no recording, no thread.
 Capture verbatim, attributed by name, hedges intact — the `sounded` tag
 requires a quoted utterance, so a capture that isn't verbatim costs the
 skill its only evidence. A machine transcript, where one exists, is the

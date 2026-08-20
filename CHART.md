@@ -21,10 +21,12 @@ so far` — plus two sections unique to this chart.
 Each `Decisions so far` line carries a provenance tag and one or two subject
 tags. See `SKILL.md` for what the three tags mean and how to earn each one.
 
-For `sounded` lines only, carry **both** links: the variant set that produced
-the reaction (evidence) and the commit or PR that embodies it (embodiment).
-Bidirectional linkage makes a later reversal tractable instead of
-archaeological.
+For `sounded` lines only, carry **three** links: the variant set that produced
+the reaction (evidence), the commit or PR that embodies it (embodiment), and
+the brief file whose `## Capture` section holds the quoted utterance
+(provenance). Bidirectional linkage makes a later reversal tractable instead
+of archaeological — the capture link is what makes the quote checkable years
+later without archaeology.
 
 ## Fog
 
