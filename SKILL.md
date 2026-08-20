@@ -74,7 +74,9 @@ process is — variant sets never target main at all. It is explicitly not one
 ticket per session: reactions arrive batched, so work through all of them.
 
 1. **Transcribe, don't interpret** — verbatim, attributed, hedges intact, before
-   any analysis. **When oracles disagree, never average**: the disagreement *is*
+   any analysis, from the `## Capture` section of the brief file
+   ([`BRIEF.md`](BRIEF.md)) where the sounding's reactions actually live.
+   **When oracles disagree, never average**: the disagreement *is*
    the finding, the sharpest form of the proxy problem; use the chart's
    tiebreaker line ([`CHART.md`](CHART.md)). Resolve ambiguous async attribution
    by asking, never by guessing.
@@ -87,8 +89,13 @@ ticket per session: reactions arrive batched, so work through all of them.
    under controlled divergence, so converge the composite or split into two
    probes; **"none of these"** → the question was wrong, so re-ticket and record
    what the framing missed; **no discrimination** → the probe failed, don't tag,
-   diagnose; **not reached** → normal, stays `prepped`, rides to the next Brief,
-   priority rises via decay, no diagnosis and no blame.
+   diagnose — and if **every probe** in the sounding classifies this way, it is
+   not a variant problem: re-run the first-run preamble and diverge harder; if
+   it recurs with the same oracle twice, that is a chart finding for the
+   Oracle line, this oracle won't discriminate in this setting;
+   **not reached** → normal, just where the **cut line** ([`BRIEF.md`](BRIEF.md)) fell,
+   stays `prepped`, rides to the next Brief, priority rises via decay,
+   no diagnosis and no blame.
 4. **Interview on incomplete coverage** — ask rather than auto-classifying,
    separating never reached / reached but sprawled / an hour spent settling
    nothing. Ask verbatim: **"Would you take this same probe back tomorrow unchanged,
@@ -101,7 +108,11 @@ ticket per session: reactions arrive batched, so work through all of them.
    session that converges nothing is a successful session — its output was a
    correction to the chart.
 7. **Write the decision line** with both links and provenance and subject tags,
-   per [`CHART.md`](CHART.md).
+   per [`CHART.md`](CHART.md). A new `sounded` line contradicting an existing
+   one that shares a subject tag is expected, not a failure — it is only a
+   failure if silent. Write a **superseding** decision line and keep both;
+   the old line's commit link shows what to unwind. Reversals clustering in
+   one subject mean that subject's fog graduated too early.
 8. **Re-examine predictions on touch**, bounded to load-bearing predictions
    sharing a subject.
 9. **Graduate fog, archive, close** — new tickets from what's now specifiable,

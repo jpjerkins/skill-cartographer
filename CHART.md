@@ -55,6 +55,10 @@ between variants would reveal — never as something you could just ask. Record
 which oracle role must react to the ticket, and its assumptions, with any
 load-bearing assumptions marked.
 
+A `prepped` ticket also carries **`carried:`**, an integer starting at 0,
+incremented by Brief each time the ticket falls below the cut line. See
+`BRIEF.md` for what the count means at three.
+
 ### States
 
 `open` → `prepped` → `closed`.

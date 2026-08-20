@@ -60,6 +60,15 @@ budget; the remainder is slack for the room running long. Below the line is
   one showing up. The brief file is still written, carrying the finding and
   no agenda items, so a released contact leaves a trace.
 
+## When this goes wrong
+
+**Agenda overflow becoming routine.** Detector: the **carried count** on
+each stretch item, incremented every time the item rides below the cut line.
+At three carries it is mispriced rather than unlucky: resize the probe, or
+close it as accepted risk. No third option. And if decay did promote it and
+it still wasn't reached, the budget is wrong — correct the chart's Oracle
+line downward.
+
 ## The template
 
 Fill this in, commit it at `briefs/YYYY-MM-DD-<oracle>.md`, and carry it into
@@ -101,6 +110,10 @@ use. Tell me which one annoys you, and where.
 
 ## Capture
 
-<A machine transcript, where one exists, is the capture. An async thread is
-pasted verbatim without summarizing on the way in.>
+<The commonest case: notes typed in the room, no recording, no thread.
+Capture verbatim, attributed by name, hedges intact — the `sounded` tag
+requires a quoted utterance, so a capture that isn't verbatim costs the
+skill its only evidence. A machine transcript, where one exists, is the
+capture. An async thread is pasted verbatim without summarizing on the way
+in.>
 ```

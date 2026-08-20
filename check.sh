@@ -82,6 +82,14 @@ check "Advance rewrites rather than promotes"     'grep -qi "rewritten" SKILL.md
 check "converging nothing is a success"           'grep -qi "converges nothing" SKILL.md'
 check "SKILL.md is within its sprawl cap"         '[ "$(wc -l < SKILL.md)" -le 200 ]'
 
+# --- Task 8: failure-mode detectors ---
+check "PREP.md caps prepping when contact stalls"  'grep -qi "stop prepping" PREP.md'
+check "PREP.md guards against probe inflation"     'grep -qi "never a reason to spend contact budget" PREP.md'
+check "BRIEF.md defines the carried count"         'grep -q "carried count" BRIEF.md'
+check "CHART.md records the carried field"         'grep -q "carried:" CHART.md'
+check "SKILL.md treats reversal as first-class"    'grep -qi "superseding" SKILL.md'
+check "SKILL.md diagnoses whole-sounding politeness" 'grep -qi "every probe" SKILL.md'
+
 echo "---"
 if [ "$fails" -eq 0 ]; then echo "all checks passed"; else echo "$fails check(s) failed"; fi
 exit $([ "$fails" -eq 0 ] && echo 0 || echo 1)

@@ -78,3 +78,18 @@ you've built past the probe.
 Target **~5 minutes** of reaction per probe, aiming for 2–4 probes per
 sounding. If one probe consumes a whole sounding, throughput drops to one
 decision per contact and oracle latency dominates absolutely.
+
+## When this goes wrong
+
+**Contact never arriving.** Detector: the count and age of `prepped`
+tickets. **Stop prepping** past roughly two soundings' worth — about 8
+probes. More prep is not free: it multiplies decay and produces variant sets
+that are stale on arrival. Shift the frontier to `research` and `task` work,
+and raise "the oracle is unreachable" as a chart-level risk.
+
+**Everything becoming a probe.** The session order above already catches
+the obvious case — restate `## Reaction needed` and stop if no comparison
+would reveal it. The subtler pull is probing what could simply be asked,
+because a probe yields `sounded` and a question only yields `predicted`.
+**Provenance quality is never a reason to spend contact budget.** Probe
+load-bearing things; ask the rest.
