@@ -69,7 +69,7 @@ you've built past the probe.
    build.
 3. List assumptions; mark load-bearing ones.
 4. Fix the axis under test.
-5. Build in the chart's sounding shape.
+5. Build in the shape the chart fixed (see `CHART.md`).
 6. Write the reaction prompt.
 7. Record `assumed` entries; label the ticket `prepped`, link the artifact.
 

@@ -31,7 +31,7 @@ The loop runs `1 → 2 → 3 → 4 → 1`. **N Prep sessions feed one Brief.**
 
 ## Between contacts: widen, never advance
 
-Build on a reaction, never on an un-reacted-to decision. Between contacts, widen: build more variants, or variants for the next question. The phase name carries the rule — don't reach Advance without a sounding.
+Build on a reaction, never on an un-reacted-to decision. Between contacts, widen: build more variants, or variants for the next question. The phase name carries the rule: a sounding is what unlocks Advance.
 
 ## Provenance
 
@@ -65,7 +65,8 @@ Ask in this order and take the first that applies.
 3. **Contact with the oracle imminent, and the last Prep is done?** → **Brief.** Read [`BRIEF.md`](BRIEF.md).
 4. **Otherwise** → **Prep.** Read [`PREP.md`](PREP.md), take one ticket from the frontier.
 
-Sound is never your session. When a sounding is happening, you are not running.
+Sound is never your session — that silence is the structural guard against
+later inventing reactions you did not witness.
 
 ## Advance
 
