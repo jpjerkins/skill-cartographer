@@ -58,6 +58,19 @@ check "PREP.md lists prototype constraints"      'grep -qi "prototype constraint
 check "PREP.md gives probe sizing in minutes"    'grep -q "5 minutes" PREP.md'
 check "PREP.md is within its sprawl cap"         '[ "$(wc -l < PREP.md)" -le 140 ]'
 
+# --- Task 6: BRIEF.md ---
+check "BRIEF.md names all three priority terms" 'grep -qi "unblocking power" BRIEF.md && grep -qi "decay" BRIEF.md && grep -qi "cost" BRIEF.md'
+check "BRIEF.md fixes the brief file path"      'grep -q "briefs/" BRIEF.md'
+check "BRIEF.md sets the cut line at 80%"       'grep -q "80%" BRIEF.md'
+check "BRIEF.md never cuts asks"                'grep -qi "never cut" BRIEF.md'
+check "BRIEF.md orders breakers first"          'grep -qi "breakers first" BRIEF.md'
+check "BRIEF.md places questions after probes"  'grep -qi "after that probe" BRIEF.md'
+check "BRIEF.md carries the first-run preamble" 'grep -qi "first-run preamble" BRIEF.md'
+check "the template has a Capture section"      'grep -q "## Capture" BRIEF.md'
+check "the template carries the room rules"     'grep -qi "advocate" BRIEF.md && grep -qi "attribute everything" BRIEF.md'
+check "BRIEF.md handles nothing-eligible"       'grep -qi "nothing is eligible" BRIEF.md'
+check "BRIEF.md is within its sprawl cap"       '[ "$(wc -l < BRIEF.md)" -le 140 ]'
+
 echo "---"
 if [ "$fails" -eq 0 ]; then echo "all checks passed"; else echo "$fails check(s) failed"; fi
 exit $([ "$fails" -eq 0 ] && echo 0 || echo 1)
