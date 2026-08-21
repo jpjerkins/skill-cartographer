@@ -16,6 +16,13 @@ load-bearing — the oracle determines which `prepped` tickets are `eligible`
 (see `CHART.md`), and oracle plus date name the brief file. Guessing either
 produces an agenda aimed at somebody who isn't coming.
 
+**When attendance is not yet settled**, ask who is *most likely* to attend, build
+the agenda for them, and mark the brief provisional in its first line. Contact is
+too scarce to hold an agenda hostage to a calendar: a provisional brief that turns
+out to be aimed at the wrong oracle still exists, and its items ride to the next
+sounding on decay. Do not silently guess — an unflagged provisional brief reads as
+a settled one at Advance.
+
 ## Prioritization
 
 Rank `eligible` tickets (see `CHART.md`) by three checkable numbers:

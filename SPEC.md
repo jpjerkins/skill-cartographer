@@ -180,8 +180,11 @@ Wayfinder's map plus two sections:
   Changing it later is a scoping act.
 
 `Decisions so far` lines carry a provenance tag, subject tags, and — for `sounded`
-— **both** the variant set that produced the reaction **and** the commit or PR that
-embodies it. Bidirectional linkage makes a later reversal tractable instead of
+— **three** links: the variant set that produced the reaction (evidence), the
+commit or PR that embodies it (embodiment), and the brief file whose `## Capture`
+section holds the quoted utterance (provenance). The capture link is what makes
+§11's first invariant satisfiable; without it the quote is required but
+untraceable. Bidirectional linkage makes a later reversal tractable instead of
 archaeological.
 
 Fog patches in *Not yet specified* name the ticket(s) that would sharpen them,
@@ -359,8 +362,8 @@ reactions arrive batched.
    standards and TDD re-engage here and only here.
    *An Advance session that converges nothing is a successful session* — its output
    was a correction to the chart.
-7. **Write the decision line** with both links (variant set = evidence, commit =
-   embodiment), plus provenance and subject tags.
+7. **Write the decision line** with all three links (variant set = evidence,
+   commit = embodiment, brief file = provenance), plus provenance and subject tags.
 8. **Re-examine predictions on touch**, bounded per §5.
 9. **Graduate fog, archive, close.** New tickets from what's now specifiable; clear
    those patches from *Not yet specified*. Variant sets become throwaway branches,
@@ -372,7 +375,7 @@ Each detector is checkable from the chart.
 
 | # | Failure | Detector | Remedy |
 |---|---|---|---|
-| 1 | Agent answers its own question | a `sounded` line with no quoted utterance and no capture link | demote to `assumed`, re-ticket |
+| 1 | Agent answers its own question | a `sounded` line lacking **either** the quoted utterance **or** the capture link | demote to `assumed`, re-ticket |
 | 2 | Politeness recorded as evidence | a sounding where **every** probe classifies "no discrimination" | re-run the first-run preamble, diverge harder; twice with the same oracle is a chart finding on the Oracle line, not a variant problem |
 | 3 | Contact never arriving | count and age of `prepped` tickets | **stop prepping** past ~2 soundings' worth (~8 probes); shift the frontier to `research` and `task`; raise "oracle unreachable" as a chart-level risk |
 | 4 | A reaction invalidating converged code | a new `sounded` line contradicting an existing `sounded` line that shares a subject tag | expected, not a failure — write a superseding decision line, keep both; the old commit link shows what to unwind. Reversals clustering in one subject mean that fog graduated too early |

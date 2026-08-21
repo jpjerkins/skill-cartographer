@@ -130,6 +130,9 @@ check "no reference file restates the loop"      'grep -qi "N Prep sessions feed
 check "the phrase sounding shape is defined once" 'grep -q "Sounding shape" CHART.md && [ "$(grep -l "sounding shape" SKILL.md CHART.md PREP.md BRIEF.md | wc -l)" -le 2 ]'
 check "no file carries an unresolved placeholder" '! grep -rniE "TBD|TODO|FIXME|XXX" SKILL.md CHART.md PREP.md BRIEF.md'
 
+check "BRIEF.md handles unsettled attendance"    'flat BRIEF.md | grep -q "When attendance is not yet settled"'
+check "BRIEF.md flags a provisional brief"      'flat BRIEF.md | grep -q "mark the brief provisional"'
+
 echo "---"
 if [ "$fails" -eq 0 ]; then echo "all checks passed"; else echo "$fails check(s) failed"; fi
 exit $([ "$fails" -eq 0 ] && echo 0 || echo 1)
