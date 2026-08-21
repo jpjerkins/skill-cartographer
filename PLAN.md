@@ -202,7 +202,7 @@ check "the confirmed-prediction rule is stated"      'grep -q "never becomes .so
 check "SKILL.md points at CHART.md"                  'grep -q "CHART.md" SKILL.md'
 check "SKILL.md points at PREP.md"                   'grep -q "PREP.md" SKILL.md'
 check "SKILL.md points at BRIEF.md"                  'grep -q "BRIEF.md" SKILL.md'
-check "every pointed-at file exists"                 'for f in $(grep -o "[A-Z]*\.md" SKILL.md | sort -u); do [ -f "$f" ] || exit 1; done'
+check "every pointed-at file exists"                 '( for f in $(grep -o "[A-Z]*\.md" SKILL.md | sort -u); do [ -f "$f" ] || exit 1; done )'
 ```
 
 - [ ] **Step 2: Run to verify the new assertions fail**
@@ -283,7 +283,7 @@ Insert before `echo "---"` in `check.sh`:
 check "CHART.md defines the Oracle section"     'grep -q "Oracle" CHART.md'
 check "CHART.md defines the sounding shape"     'grep -qi "sounding shape" CHART.md'
 check "CHART.md names a tiebreaker"             'grep -qi "tiebreaker" CHART.md'
-check "CHART.md defines all four ticket kinds"  'grep -q "probe" CHART.md && grep -q "question" CHART.md && grep -q "research" CHART.md && grep -q "task" CHART.md'
+check "CHART.md defines all four ticket kinds"  '[ "$(grep -c "^- \*\*probe\*\*\|^- \*\*question\*\*\|^- \*\*research\*\*\|^- \*\*task\*\*" CHART.md)" -eq 4 ]'
 check "CHART.md defines the three states"       'grep -q "prepped" CHART.md && grep -q "closed" CHART.md'
 check "CHART.md defines frontier and eligible"  'grep -q "frontier" CHART.md && grep -q "eligible" CHART.md'
 check "CHART.md constrains blocking edges"      'grep -qi "blocking edges" CHART.md'
@@ -525,7 +525,7 @@ Insert before `echo "---"` in `check.sh`:
 # --- Task 8: failure-mode detectors ---
 check "PREP.md caps prepping when contact stalls"  'grep -qi "stop prepping" PREP.md'
 check "PREP.md guards against probe inflation"     'grep -qi "never a reason to spend contact budget" PREP.md'
-check "BRIEF.md defines the carried count"         'grep -q "carried" BRIEF.md'
+check "BRIEF.md defines the carried count"         'grep -q "carried count" BRIEF.md'
 check "CHART.md records the carried field"         'grep -q "carried:" CHART.md'
 check "SKILL.md treats reversal as first-class"    'grep -qi "superseding" SKILL.md'
 check "SKILL.md diagnoses whole-sounding politeness" 'grep -qi "every probe" SKILL.md'
