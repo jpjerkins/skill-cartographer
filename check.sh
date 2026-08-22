@@ -52,7 +52,9 @@ check "the confirmed-prediction rule is stated"      'flat SKILL.md | grep -q "A
 check "SKILL.md points at CHART.md"                  'grep -q "(CHART.md)" SKILL.md'
 check "SKILL.md points at PREP.md"                   'grep -q "(PREP.md)" SKILL.md'
 check "SKILL.md points at BRIEF.md"                  'grep -q "(BRIEF.md)" SKILL.md'
-check "every pointed-at file exists"                 '( for f in $(grep -o "[A-Z][A-Z]*\.md" SKILL.md | sort -u); do [ -f "$f" ] || exit 1; done )'
+# Local pointers are bare filenames; a path with a slash (docs/agents/issue-tracker.md)
+# names a file in the TARGET repo, not this one, so it is deliberately excluded.
+check "every pointed-at file exists"                 '( for f in $(grep -oh "[A-Za-z0-9_/.-]*[A-Za-z0-9]\.md" SKILL.md CHART.md PREP.md BRIEF.md | grep -v "/" | sort -u); do [ -f "$f" ] || exit 1; done )'
 check "the routing block asks four gates in order"   '[ "$(block SKILL.md "^## Which phase am I in" "/^## Advance/" | grep -c "^[0-9]\. \*\*")" -eq 4 ] && flatblock SKILL.md "^## Which phase am I in" "/^## Advance/" | grep -q "Ask in this order and take the first that applies"'
 check "routing gate 1 is the no-chart gate"          'flatblock SKILL.md "^## Which phase am I in" "/^## Advance/" | grep -q "1. \*\*No chart for this effort yet?\*\* → \*\*Chart.\*\* Read \[.CHART.md.\](CHART.md)"'
 check "routing gate 4 falls through to Prep"         'flatblock SKILL.md "^## Which phase am I in" "/^## Advance/" | grep -q "4. \*\*Otherwise\*\* → \*\*Prep.\*\* Read \[.PREP.md.\](PREP.md)"'
