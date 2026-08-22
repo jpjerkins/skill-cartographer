@@ -390,16 +390,22 @@ only by a proxy oracle must be flagged there.**
 
 ```
 cartographer/
-  SKILL.md      the loop — what every session does, in order
-  CHART.md      chart + ticket format; charting and writing to the chart
-  PREP.md       building a variant set and picking its form
-  BRIEF.md      assembling and prioritizing the agenda artifact
+  SKILL.md            the loop — what every session does, in order
+  CHART.md            chart + ticket format; charting and writing to the chart
+  PREP.md             building a variant set and picking its form
+  BRIEF.md            assembling and prioritizing the agenda artifact
+  tracker-github.md   seed for a GitHub tracker doc's Cartography operations section
+  tracker-local.md    seed for a local-markdown tracker doc's Cartography operations section
 ```
 
 Placement follows the information hierarchy: `SKILL.md` carries the loop, the two
 absolute rules, the provenance table and the phase-entry decision — what **every**
 branch needs. `CHART.md`, `PREP.md` and `BRIEF.md` are disclosed reference reached
 by pointers from the phase each serves, since only that branch reaches them.
+`tracker-github.md` and `tracker-local.md` are separate files rather than one
+file with a branch inside it: each is read once, at Chart-time provisioning
+(see `CHART.md`), and only one of the two ever loads into a given repo's
+tracker doc — the other is dead weight that session and every session after.
 
 Sound and Advance have **no** file of their own: Sound's instructions belong in the
 brief artifact (the agent isn't there), and Advance's ordered steps sit in

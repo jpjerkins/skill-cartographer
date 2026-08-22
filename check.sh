@@ -52,7 +52,7 @@ check "the confirmed-prediction rule is stated"      'flat SKILL.md | grep -q "A
 check "SKILL.md points at CHART.md"                  'grep -q "(CHART.md)" SKILL.md'
 check "SKILL.md points at PREP.md"                   'grep -q "(PREP.md)" SKILL.md'
 check "SKILL.md points at BRIEF.md"                  'grep -q "(BRIEF.md)" SKILL.md'
-check "every pointed-at file exists"                 '( for f in $(grep -o "[A-Z]*\.md" SKILL.md | sort -u); do [ -f "$f" ] || exit 1; done )'
+check "every pointed-at file exists"                 '( for f in $(grep -o "[A-Z][A-Z]*\.md" SKILL.md | sort -u); do [ -f "$f" ] || exit 1; done )'
 check "the routing block asks four gates in order"   '[ "$(block SKILL.md "^## Which phase am I in" "/^## Advance/" | grep -c "^[0-9]\. \*\*")" -eq 4 ] && flatblock SKILL.md "^## Which phase am I in" "/^## Advance/" | grep -q "Ask in this order and take the first that applies"'
 check "routing gate 1 is the no-chart gate"          'flatblock SKILL.md "^## Which phase am I in" "/^## Advance/" | grep -q "1. \*\*No chart for this effort yet?\*\* → \*\*Chart.\*\* Read \[.CHART.md.\](CHART.md)"'
 check "routing gate 4 falls through to Prep"         'flatblock SKILL.md "^## Which phase am I in" "/^## Advance/" | grep -q "4. \*\*Otherwise\*\* → \*\*Prep.\*\* Read \[.PREP.md.\](PREP.md)"'
@@ -132,6 +132,23 @@ check "no file carries an unresolved placeholder" '! grep -rniE "TBD|TODO|FIXME|
 
 check "BRIEF.md handles unsettled attendance"    'flat BRIEF.md | grep -q "When attendance is not yet settled"'
 check "BRIEF.md flags a provisional brief"      'flat BRIEF.md | grep -q "mark the brief provisional"'
+
+# --- Task 10: tracker provisioning ---
+check "tracker-github.md exists" '[ -f tracker-github.md ]'
+check "tracker-local.md exists"  '[ -f tracker-local.md ]'
+check "SKILL.md names the tracker doc path and operations section" 'flat SKILL.md | grep -q "docs/agents/issue-tracker.md. in the target repo, under its .## Cartography operations. section"'
+check "SKILL.md provisions the section when absent, in any phase" 'flat SKILL.md | grep -q "If that section is missing — in any phase, not only Chart — provision it before doing anything else" && flat SKILL.md | grep -q "per \[.CHART.md.\](CHART.md)"'
+check "CHART.md provisions before the charting session order" '[ "$(grep -n "^## Provisioning the tracker doc" CHART.md | cut -d: -f1)" -lt "$(grep -n "^## Charting session order" CHART.md | cut -d: -f1)" ]'
+check "CHART.md covers the doc-exists-without-section case" 'flat CHART.md | grep -q "exists but has no .## Cartography operations. section" && flat CHART.md | grep -q "Reuse it; do not re-ask which tracker"'
+check "CHART.md covers the no-tracker-doc-at-all case" 'flat CHART.md | grep -q "No tracker doc at all\*\* — ask the user which tracker this repo uses" && flat CHART.md | grep -q "proposing GitHub when .git remote -v. points at a GitHub remote"'
+check "CHART.md asks rather than defaults, and says so"  'flat CHART.md | grep -q "\*\*Never default silently.\*\* The tracker choice is always the user.s, and is always recorded"'
+check "tracker-github.md defines the frontier and eligible queries" 'flat tracker-github.md | grep -q "Frontier query" && flat tracker-github.md | grep -q "Eligible query"'
+check "tracker-local.md defines the frontier and eligible queries"  'flat tracker-local.md | grep -q "Frontier query" && flat tracker-local.md | grep -q "Eligible query"'
+check "tracker-github.md defines the three states"  'flat tracker-github.md | grep -q ".open. → .prepped. → .closed."'
+check "tracker-local.md defines the three states"   'flat tracker-local.md | grep -q ".open. → .prepped. → .closed."'
+check "tracker-github.md names the four ticket kinds" 'flat tracker-github.md | grep -q "(.probe./.question./.research./.task.)"'
+check "tracker-local.md names the four ticket kinds"  'flat tracker-local.md | grep -q "(.probe./.question./.research./.task.)"'
+check "SPEC.md deliverables list the two seed templates" 'flat SPEC.md | grep -q "tracker-github.md" && flat SPEC.md | grep -q "tracker-local.md" && flat SPEC.md | grep -qi "only one of the two ever loads"'
 
 echo "---"
 if [ "$fails" -eq 0 ]; then echo "all checks passed"; else echo "$fails check(s) failed"; fi

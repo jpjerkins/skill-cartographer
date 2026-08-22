@@ -82,6 +82,26 @@ Use the tracker's native dependency relation.
 
 A blocker may be the human's own to do.
 
+## Provisioning the tracker doc
+
+Every Chart session starts here — and any other phase that reaches for the
+tracker doc and finds its `## Cartography operations` section missing does
+the same before proceeding.
+
+- **The doc exists but has no `## Cartography operations` section** — the
+  sibling `/setup-matt-pocock-skills` already ran and recorded the tracker
+  choice. Reuse it; do not re-ask which tracker. Append the section from
+  this skill's matching seed template (`tracker-github.md` or
+  `tracker-local.md`) to `docs/agents/issue-tracker.md`.
+- **No tracker doc at all** — ask the user which tracker this repo uses,
+  GitHub issues or local markdown, proposing GitHub when `git remote -v`
+  points at a GitHub remote. Then write `docs/agents/issue-tracker.md` from
+  the matching seed template, `## Cartography operations` section included.
+
+**Never default silently.** The tracker choice is always the user's, and is
+always recorded in the doc — a cold session must never fall back to local
+markdown because nobody answered.
+
 ## Charting session order
 
 1. Name the destination.

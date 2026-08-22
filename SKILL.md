@@ -17,7 +17,10 @@ the map — here called the **chart** — with a destination, fog-of-war, *Not
 yet specified*, *Out of scope*, ticket claiming, the frontier query, and
 tracker-agnosticism. Where this skill is silent on how the tracker expresses
 maps, child tickets, blocking or queries, consult the tracker doc, exactly as
-`/wayfinder` does.
+`/wayfinder` does: `docs/agents/issue-tracker.md` in the target repo, under
+its `## Cartography operations` section. If that section is missing — in any
+phase, not only Chart — provision it before doing anything else, per
+[`CHART.md`](CHART.md).
 
 ## The loop
 
