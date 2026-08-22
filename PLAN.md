@@ -14,7 +14,7 @@
 
 - **Install path:** `~/.claude/skills/cartographer/`. This directory is already a git repo with `DECISIONS.md` and `SPEC.md` committed.
 - **Frontmatter on `SKILL.md` only.** `name: cartographer`, and `disable-model-invocation: true` verbatim (SPEC §2).
-- **Four deliverable files exactly:** `SKILL.md`, `CHART.md`, `PREP.md`, `BRIEF.md` (SPEC §10). Sound and Advance get no file of their own.
+- **Four deliverable files exactly:** `SKILL.md`, `CHART.md`, `PREP.md`, `BRIEF.md` (SPEC §14). Sound and Advance get no file of their own.
 - **Vocabulary is load-bearing** (SPEC §3). Use `chart`, `fog`, `oracle`, `probe`, `variant set`, `breaker`, `sounding`, `brief`, `decay`, `cut line`, `advance` exactly as defined. "Sounding" is the act, never the artifact.
 - **Single source of truth.** Each meaning lives in exactly one file. The provenance table, the two absolute rules, and the quote rule each appear once across the whole skill.
 - **Sprawl caps:** `SKILL.md` ≤ 200 lines, each reference file ≤ 140 lines. Wayfinder's own SKILL.md is 128 lines — that is the calibration.
@@ -356,15 +356,15 @@ Expected: earlier checks PASS; the eight content checks FAIL; the sprawl-cap che
 
 - [ ] **Step 3: Write PREP.md**
 
-Write the file from **SPEC §8.1**, condensed to ≤ 140 lines, in this order:
+Write the file from **SPEC §9**, condensed to ≤ 140 lines, in this order:
 
 1. **`## The rule`** — "Radical variation on the axis under test. Everything off-axis held constant." Then the checkability point: the `## Reaction needed` field names the axis, so a difference not on that axis is a bug in the variant set, catchable before building.
 2. **`## The two failure modes`** — wallpaper (variants differ only in degree; nothing to react to) and uninterpretable (variants differ everywhere; you learn which won, never why).
-3. **`## The cap`** — at most 5 variants, at least 2 on-axis, therefore at most 3 breakers, therefore a probe with 4+ load-bearing assumptions cannot be built. Then SPEC §8.1's four-step escalation reproduced in full as a numbered list with bolded leads, ending on **assumption count is a measurable proxy for sharpness**. Keep the numbered-list formatting — the check counts four `1.`–`4.` bolded items.
+3. **`## The cap`** — at most 5 variants, at least 2 on-axis, therefore at most 3 breakers, therefore a probe with 4+ load-bearing assumptions cannot be built. Then SPEC §9's four-step escalation reproduced in full as a numbered list with bolded leads, ending on **assumption count is a measurable proxy for sharpness**. Keep the numbered-list formatting — the check counts four `1.`–`4.` bolded items.
 4. **`## Assumptions`** — recorded on the ticket before building, load-bearing ones marked; listing them afterwards is reconstruction. Name the breaker: a variant built specifically to violate a load-bearing assumption, which is a gate rather than a competitor.
-5. **`## The reaction prompt`** — ships with every variant set: 2–3 forced choices phrased so approval isn't an available answer. Include SPEC §8.1's contrast verbatim ("which would annoy you first, and on which screen?") and the domain-language-not-code rule.
-6. **`## Prototype constraints`** — no tests, no error handling beyond runnability, no persistence, no abstraction; shared `<Header>` fine, shared `<Layout>` defeats the point. Add the gold-plating heuristic from SPEC §9: if you'd be sad to delete it, it's gold-plated.
-7. **`## Session order`** — SPEC §8.1's seven steps, keeping the reclassify-and-stop branch explicit.
+5. **`## The reaction prompt`** — ships with every variant set: 2–3 forced choices phrased so approval isn't an available answer. Include SPEC §9's contrast verbatim ("which would annoy you first, and on which screen?") and the domain-language-not-code rule.
+6. **`## Prototype constraints`** — no tests, no error handling beyond runnability, no persistence, no abstraction; shared `<Header>` fine, shared `<Layout>` defeats the point. Add the gold-plating heuristic from SPEC §13: if you'd be sad to delete it, it's gold-plated.
+7. **`## Session order`** — SPEC §9's seven steps, keeping the reclassify-and-stop branch explicit.
 8. **`## Sizing`** — ~5 minutes of reaction per probe, targeting 2–4 probes per sounding, with the reason: if one probe consumes a whole sounding, throughput is one decision per contact and oracle latency dominates absolutely.
 
 - [ ] **Step 4: Run to verify all assertions pass**
@@ -419,15 +419,15 @@ Expected: earlier checks PASS; the ten content checks FAIL; the sprawl-cap check
 
 - [ ] **Step 3: Write BRIEF.md**
 
-Write the file from **SPEC §8.2 and §8.3**, condensed to ≤ 140 lines, in this order:
+Write the file from **SPEC §10 and §11**, condensed to ≤ 140 lines, in this order:
 
 1. **`## When Brief runs`** — its own session, after the last Prep before contact, never earlier, because eligibility depends on who is in the room. State that Brief never builds: a gap it finds is Prep's job and needs Prep's session.
-2. **`## Prioritization`** — the three checkable numbers from SPEC §8.2: unblocking power (native blocking relations pointing at the ticket + fog patches naming it), decay (count of `assumed`/`predicted` decision lines dated after the probe was labelled `prepped` that share a subject tag with it — subject-scoped so unrelated work doesn't inflate it), and cost (estimated reaction minutes).
+2. **`## Prioritization`** — the three checkable numbers from SPEC §10: unblocking power (native blocking relations pointing at the ticket + fog patches naming it), decay (count of `assumed`/`predicted` decision lines dated after the probe was labelled `prepped` that share a subject tag with it — subject-scoped so unrelated work doesn't inflate it), and cost (estimated reaction minutes).
 3. **`## The artifact`** — canonical form is a markdown one-pager committed at `briefs/YYYY-MM-DD-<oracle>.md`; it is the durable record and Advance reads it back. A remote or async oracle gets a published rendering of that same file with live variant links — a rendering, never a second source of truth.
 4. **`## Cut line`** — probes carry estimated minutes (default 5, breakers bundled in since gates run in seconds); questions budget 1 minute each; asks get their own section, a flat 1 minute for the whole list, and are **never cut** because they are handed over rather than reacted to. The cut line falls at **80%** of the chart's stated budget, the remainder being slack for the room running long. Below the line = stretch: carried, not failed, and decay raises its priority next time.
-5. **`## Order`** — breakers first, matching Advance's processing order, with the bias rule: neutralize by form, not order — present a breaker as a question about the assumption ("B has no undo. Does that matter here?"), never as one more thing to rank. Then questions ride after their probe, with SPEC §8.2's reason stated in full: a verbal answer given first is a `predicted` the oracle will then defend when they see the variants, contaminating the only real evidence in the room. Orphan questions batch at the tail.
+5. **`## Order`** — breakers first, matching Advance's processing order, with the bias rule: neutralize by form, not order — present a breaker as a question about the assumption ("B has no undo. Does that matter here?"), never as one more thing to rank. Then questions ride after their probe, with SPEC §10's reason stated in full: a verbal answer given first is a `predicted` the oracle will then defend when they see the variants, contaminating the only real evidence in the room. Orphan questions batch at the tail.
 6. **`## Degenerate cases`** — no eligible probes but eligible questions or asks → still produce a short brief, because contact is too scarce to waive. When **nothing is eligible** at all → no agenda and a chart finding (either release the contact, or the frontier is aimed at an oracle who isn't the one showing up), and the brief file is still written carrying the finding and no agenda items, so a released contact leaves a trace.
-7. **`## The template`** — a fenced markdown block the agent fills in and commits. It must contain, in order: a title line with date and oracle; the **first-run preamble** addressed to the human running the sounding (*you're picking between working things; "looks good" isn't an answer I can use; tell me which one annoys you and where*); the **three rules for the room** from SPEC §8.3 (don't advocate — present, then stop talking; don't accept approval; attribute everything by name); a per-item block with question in domain language, links to the variant set, the forced-choice reaction prompt, and expected minutes; the cut line marked as a horizontal rule with stretch items below it; an asks section; a line for **where the cut actually fell**; and a trailing empty `## Capture` section with the instruction that a machine transcript, where one exists, *is* the capture, and that an async thread is pasted verbatim without summarizing on the way in.
+7. **`## The template`** — a fenced markdown block the agent fills in and commits. It must contain, in order: a title line with date and oracle; the **first-run preamble** addressed to the human running the sounding (*you're picking between working things; "looks good" isn't an answer I can use; tell me which one annoys you and where*); the **three rules for the room** from SPEC §11 (don't advocate — present, then stop talking; don't accept approval; attribute everything by name); a per-item block with question in domain language, links to the variant set, the forced-choice reaction prompt, and expected minutes; the cut line marked as a horizontal rule with stretch items below it; an asks section; a line for **where the cut actually fell**; and a trailing empty `## Capture` section with the instruction that a machine transcript, where one exists, *is* the capture, and that an async thread is pasted verbatim without summarizing on the way in.
 
 - [ ] **Step 4: Run to verify all assertions pass**
 
@@ -479,11 +479,11 @@ Expected: earlier checks PASS; the eight content checks FAIL; the sprawl-cap che
 
 - [ ] **Step 3: Append the Advance section to SKILL.md**
 
-Write from **SPEC §8.4** as a nine-item numbered list, ≤ 55 lines, opening with the framing that Advance is the only phase that contributes to main via whatever the repo's process is, that variant sets never target main at all, and that it is explicitly not one ticket per session because reactions arrive batched. The nine steps, keeping every bolded lead:
+Write from **SPEC §12** as a nine-item numbered list, ≤ 55 lines, opening with the framing that Advance is the only phase that contributes to main via whatever the repo's process is, that variant sets never target main at all, and that it is explicitly not one ticket per session because reactions arrive batched. The nine steps, keeping every bolded lead:
 
 1. **Transcribe, don't interpret** — verbatim, attributed, hedges intact, before any analysis. **When oracles disagree, never average**: the disagreement *is* the finding, the sharpest form of the proxy problem; use the chart's tiebreaker line. Resolve ambiguous async attribution by asking, never by guessing.
 2. **Record and process breakers first** — a breaker winning is a bigger result than any on-axis win because it voids the on-axis comparison entirely. Record the assumption killed, discard the on-axis result even if one variant clearly won, re-prep on corrected footing.
-3. **Classify each on-axis result** — the five outcomes from SPEC §8.4 step 3, each with its handling: one variant wins → converge; composite → the axis has sub-structure, a structural finding under controlled divergence, so converge the composite or split into two probes; "none of these" → the question was wrong, so re-ticket and record what the framing missed; no discrimination → the probe failed, don't tag, diagnose; not reached → normal, stays `prepped`, rides to the next Brief, priority rises via decay, no diagnosis and no blame.
+3. **Classify each on-axis result** — the five outcomes from SPEC §12 step 3, each with its handling: one variant wins → converge; composite → the axis has sub-structure, a structural finding under controlled divergence, so converge the composite or split into two probes; "none of these" → the question was wrong, so re-ticket and record what the framing missed; no discrimination → the probe failed, don't tag, diagnose; not reached → normal, stays `prepped`, rides to the next Brief, priority rises via decay, no diagnosis and no blame.
 4. **Interview on incomplete coverage** — ask rather than auto-classifying, separating never reached / reached but sprawled / an hour spent settling nothing. Include the single best question verbatim: **"Would you take this same probe back tomorrow unchanged, or does it need reframing?"**
 5. **Capture asks born in the room** — rare, and usually appearing during the sounding rather than planned into the brief.
 6. **Converge** — rewrite the winner properly. Not promoted, rewritten: variants carry prototype constraints that must not reach production. Repo standards and TDD re-engage here and only here. An Advance session that converges nothing is a successful session — its output was a correction to the chart.
@@ -507,7 +507,7 @@ git commit -m "feat(cartographer): add the Advance phase"
 
 ### Task 8: Failure-mode detectors
 
-SPEC §9's seven detectors, each placed in the phase that would actually notice it. They are co-located with their phase rather than gathered into a list, so the agent meets each detector while doing the work that trips it.
+SPEC §13's seven detectors, each placed in the phase that would actually notice it. They are co-located with their phase rather than gathered into a list, so the agent meets each detector while doing the work that trips it.
 
 **Files:**
 - Modify: `PREP.md`, `BRIEF.md`, `SKILL.md`, `CHART.md`
@@ -540,19 +540,19 @@ Expected: the 55 earlier checks PASS; all six new checks FAIL; exit 1.
 
 **In `PREP.md`, a `## When this goes wrong` subsection** carrying two detectors:
 
-- *Contact never arriving* (SPEC §9.3). Detector: the count and age of `prepped` tickets. **Stop prepping past roughly two soundings' worth — about 8 probes.** More prep is not free: it multiplies decay and produces variant sets that are stale on arrival. Shift the frontier to `research` and `task` work, and raise "the oracle is unreachable" as a chart-level risk.
-- *Everything becoming a probe* (SPEC §9.7). The session order already catches the obvious case. Name the subtler pull: probing what could simply be asked, because a probe yields `sounded` and a question only yields `predicted`. State the rule verbatim — **provenance quality is never a reason to spend contact budget.** Probe load-bearing things; ask the rest.
+- *Contact never arriving* (SPEC §13.3). Detector: the count and age of `prepped` tickets. **Stop prepping past roughly two soundings' worth — about 8 probes.** More prep is not free: it multiplies decay and produces variant sets that are stale on arrival. Shift the frontier to `research` and `task` work, and raise "the oracle is unreachable" as a chart-level risk.
+- *Everything becoming a probe* (SPEC §13.7). The session order already catches the obvious case. Name the subtler pull: probing what could simply be asked, because a probe yields `sounded` and a question only yields `predicted`. State the rule verbatim — **provenance quality is never a reason to spend contact budget.** Probe load-bearing things; ask the rest.
 
 **In `BRIEF.md`, a `## When this goes wrong` subsection** carrying one detector:
 
-- *Agenda overflow becoming routine* (SPEC §9.5). Detector: the **carried count** on each stretch item, incremented every time the item rides below the cut line. At three carries it is mispriced rather than unlucky: resize the probe, or close it as accepted risk. No third option. And if decay did promote it and it still wasn't reached, the budget is wrong — correct the chart's Oracle line downward.
+- *Agenda overflow becoming routine* (SPEC §13.5). Detector: the **carried count** on each stretch item, incremented every time the item rides below the cut line. At three carries it is mispriced rather than unlucky: resize the probe, or close it as accepted risk. No third option. And if decay did promote it and it still wasn't reached, the budget is wrong — correct the chart's Oracle line downward.
 
 **In `CHART.md`**, add `carried:` to the ticket fields: an integer on `prepped` tickets, starting at 0, incremented by Brief whenever the ticket falls below the cut line.
 
 **In `SKILL.md`'s Advance section**, extend two existing steps rather than adding new ones:
 
-- Step 3's *no discrimination* outcome gains the whole-sounding case (SPEC §9.2): when **every probe** in a sounding classifies as no discrimination, it is not a variant problem. Re-run the first-run preamble and diverge harder; if it recurs with the same oracle twice, that is a chart finding for the Oracle line — this oracle won't discriminate in this setting.
-- Step 7 gains reversal (SPEC §9.4): a new `sounded` line contradicting an existing one that shares a subject tag is expected, not a failure — it is only a failure if silent. Write a **superseding** decision line and keep both; the old line's commit link shows what to unwind. Reversals clustering in one subject mean that subject's fog graduated too early.
+- Step 3's *no discrimination* outcome gains the whole-sounding case (SPEC §13.2): when **every probe** in a sounding classifies as no discrimination, it is not a variant problem. Re-run the first-run preamble and diverge harder; if it recurs with the same oracle twice, that is a chart finding for the Oracle line — this oracle won't discriminate in this setting.
+- Step 7 gains reversal (SPEC §13.4): a new `sounded` line contradicting an existing one that shares a subject tag is expected, not a failure — it is only a failure if silent. Write a **superseding** decision line and keep both; the old line's commit link shows what to unwind. Reversals clustering in one subject mean that subject's fog graduated too early.
 
 Detector 1 (agent answers its own question) is already covered by the quote rule in `SKILL.md`, and detector 6 (gold-plated variants) by the prototype constraints in `PREP.md`. Add nothing for them.
 
@@ -616,18 +616,18 @@ git commit -m "chore(cartographer): audit for duplication, no-ops, and vocabular
 
 - [ ] **Step 5: Run the skill for real, on one small home project**
 
-Per SPEC §12, run it where the human is openly his own proxy — not on work. Complete one full `Prep → Brief → Sound → Advance` cycle. **Stop and hand back to the human for the Sound phase; the agent does not run during a sounding.**
+Per SPEC §16, run it where the human is openly his own proxy — not on work. Complete one full `Prep → Brief → Sound → Advance` cycle. **Stop and hand back to the human for the Sound phase; the agent does not run during a sounding.**
 
 Success is not "the skill ran". Both of these must be true:
 
 - At least one `assumed` entry was overturned by a breaker.
 - At least one decision line reached `sounded` with a real quote.
 
-Verify the three invariants from SPEC §11 by reading the chart: every `sounded` line quotes an utterance and links its capture; the sounding has a brief file with a `## Capture` section; no Prep session ran while unadvanced reactions sat on the chart.
+Verify the three invariants from SPEC §15 by reading the chart: every `sounded` line quotes an utterance and links its capture; the sounding has a brief file with a `## Capture` section; no Prep session ran while unadvanced reactions sat on the chart.
 
 - [ ] **Step 6: Record what the dry run taught, then commit**
 
-Append a `## Dry run` section to `DECISIONS.md` recording which invariants held, which of the seven failure modes from SPEC §9 actually appeared, and any wording that misfired in practice.
+Append a `## Dry run` section to `DECISIONS.md` recording which invariants held, which of the seven failure modes from SPEC §13 actually appeared, and any wording that misfired in practice.
 
 ```bash
 git add -A

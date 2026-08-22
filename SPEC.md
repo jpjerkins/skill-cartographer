@@ -113,7 +113,7 @@ Four mechanisms keep provenance honest:
 - **c. Re-examine on touch** — bounded, see below.
 - **d. Destination gate.** Not finished while a load-bearing prediction is
   unsounded; each must be sounded or accepted as a named risk. The one exhaustive
-  sweep lives here, along with the proxy-oracle flag (§9).
+  sweep lives here, along with the proxy-oracle flag (§13).
 
 ### Re-examination scope
 
@@ -183,7 +183,7 @@ Wayfinder's map plus two sections:
 — **three** links: the variant set that produced the reaction (evidence), the
 commit or PR that embodies it (embodiment), and the brief file whose `## Capture`
 section holds the quoted utterance (provenance). The capture link is what makes
-§11's first invariant satisfiable; without it the quote is required but
+§15's first invariant satisfiable; without it the quote is required but
 untraceable. Bidirectional linkage makes a later reversal tractable instead of
 archaeological.
 
@@ -191,9 +191,7 @@ Fog patches in *Not yet specified* name the ticket(s) that would sharpen them,
 written when that ticket is created. Fog isn't a ticket, so it cannot hold a native
 relation — this is the one place a body convention is used.
 
-## 8. Phase specifications
-
-### 8.0 Chart
+## 8. Chart
 
 Runs once per effort. §7 specifies the chart *artifact*; this specifies how it is
 made. Both grilling passes are load-bearing and neither is optional.
@@ -217,7 +215,7 @@ made. Both grilling passes are load-bearing and neither is optional.
 
 Charting resolves nothing. It is one session's work and ends when the chart exists.
 
-### 8.1 Prep
+## 9. Prep
 
 **Radical variation on the axis under test. Everything off-axis held constant.**
 
@@ -262,7 +260,7 @@ reaction prompt → record `assumed` entries → label `prepped`, link the artif
 If one probe consumes a whole sounding, throughput is one decision per contact and
 oracle latency dominates absolutely.
 
-### 8.2 Brief
+## 10. Brief
 
 Runs in **its own session, after the last Prep before contact** — never earlier,
 because eligibility depends on who is in the room.
@@ -313,10 +311,10 @@ which one annoys you and where.* It belongs in the artifact, not the agent's hea
 - Nothing eligible at all → **no agenda, and a chart finding**: either release the
   contact, or the frontier is aimed at an oracle who isn't the one showing up. The
   brief file is still written, carrying the finding and no agenda items, so the
-  invariant in §11 holds and a released contact leaves a trace.
+  invariant in §15 holds and a released contact leaves a trace.
 - **Brief never builds.** A gap it finds is Prep's job and needs Prep's session.
 
-### 8.3 Sound
+## 11. Sound
 
 The human phase. **The agent runs no session while it happens** — that silence is
 the structural guard against the agent later inventing reactions it didn't witness.
@@ -347,7 +345,7 @@ no summarizing on the way in. Attribution in a pasted thread is often ambiguous 
 display names, aliases, people forwarded in late. Advance **asks** rather than
 guessing who the oracles were.
 
-### 8.4 Advance
+## 12. Advance
 
 The only phase that **contributes to main**, via whatever the repo's process is.
 Variant sets never target main at all. Explicitly **not** one ticket per session —
@@ -393,7 +391,7 @@ reactions arrive batched.
    those patches from *Not yet specified*. Variant sets become throwaway branches,
    linked from their tickets.
 
-## 9. Failure modes and detectors
+## 13. Failure modes and detectors
 
 Each detector is checkable from the chart.
 
@@ -410,7 +408,7 @@ Each detector is checkable from the chart.
 Failure 3 adds one rule to the destination gate: **load-bearing decisions sounded
 only by a proxy oracle must be flagged there.**
 
-## 10. Deliverables
+## 14. Deliverables
 
 ```
 cartographer/
@@ -435,7 +433,7 @@ Sound and Advance have **no** file of their own: Sound's instructions belong in 
 brief artifact (the agent isn't there), and Advance's ordered steps sit in
 `SKILL.md` because Advance is where every loop lands.
 
-## 11. Invariants
+## 15. Invariants
 
 Three chart-auditable invariants, checkable without reading code. They are the
 skill's test suite.
@@ -445,14 +443,14 @@ skill's test suite.
    section** once its sounding has happened.
 3. **No Prep session ran while unadvanced reactions sat on the chart.**
 
-## 12. Validation
+## 16. Validation
 
 Validate on **one small home project where the user is openly his own proxy**
 before pointing the skill at work. Success is not "the skill ran" but: at least one
 `assumed` entry got overturned by a breaker, and at least one decision line reached
 `sounded` with a real quote.
 
-## 13. Out of scope
+## 17. Out of scope
 
 - Slide-deck brief rendering. The markdown one-pager plus optional published
   rendering covers both reachability cases.
