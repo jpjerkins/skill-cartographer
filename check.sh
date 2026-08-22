@@ -146,16 +146,19 @@ check "CHART.md covers the no-tracker-doc-at-all case" 'flat CHART.md | grep -q 
 check "CHART.md asks rather than defaults, and says so"  'flat CHART.md | grep -q "\*\*Never default silently.\*\* The tracker choice is always the user.s, and is always recorded"'
 check "tracker-github.md defines the frontier and eligible queries" 'flat tracker-github.md | grep -q "Frontier query" && flat tracker-github.md | grep -q "Eligible query"'
 check "tracker-local.md defines the frontier and eligible queries"  'flat tracker-local.md | grep -q "Frontier query" && flat tracker-local.md | grep -q "Eligible query"'
-check "tracker-github.md defines the three states"  'flat tracker-github.md | grep -q ".open. → .prepped. → .closed."'
-check "tracker-local.md defines the three states"   'flat tracker-local.md | grep -q ".open. → .prepped. → .closed."'
-check "tracker-github.md names the four ticket kinds" 'flat tracker-github.md | grep -q "(.probe./.question./.research./.task.)"'
-check "tracker-local.md names the four ticket kinds"  'flat tracker-local.md | grep -q "(.probe./.question./.research./.task.)"'
 check "SPEC.md deliverables list the two seed templates" 'flat SPEC.md | grep -q "tracker-github.md" && flat SPEC.md | grep -q "tracker-local.md" && flat SPEC.md | grep -qi "only one of the two ever loads"'
 
 check "charting grills the destination out of the human" 'flatblock CHART.md "^## Charting session order" "$" | grep -q "grill it out of the human"'
 check "charting treats repo material as a hypothesis"  'flatblock CHART.md "^## Charting session order" "$" | grep -q "starting hypothesis to put to them and have confirmed"'
 check "charting grills the fog breadth-first"          'flatblock CHART.md "^## Charting session order" "$" | grep -q "grill again, breadth-first"'
 check "charting stops when no fog surfaces"            'flatblock CHART.md "^## Charting session order" "$" | grep -q "no chart is needed"'
+
+check "tracker-github.md defers semantics to the skill" 'flat tracker-github.md | grep -q "CHART.md" && flat tracker-github.md | grep -q "BRIEF.md"'
+check "tracker-local.md defers semantics to the skill"  'flat tracker-local.md | grep -q "CHART.md" && flat tracker-local.md | grep -q "BRIEF.md"'
+check "tracker-github.md keeps its backend mechanics"   'flat tracker-github.md | grep -q "cartographer:prepped" && flat tracker-github.md | grep -q "gh issue create --label cartographer:map"'
+check "tracker-local.md keeps its backend mechanics"    'flat tracker-local.md | grep -q "Status:" && flat tracker-local.md | grep -q "scratch/<effort>/map.md"'
+check "no tracker template restates the ticket kinds"   '[ -s tracker-github.md ] && [ -s tracker-local.md ] && ! grep -q "probe./.question./.research" tracker-github.md tracker-local.md'
+check "no tracker template restates the link count"     '[ -s tracker-github.md ] && [ -s tracker-local.md ] && ! grep -q "all three links" tracker-github.md tracker-local.md'
 
 echo "---"
 if [ "$fails" -eq 0 ]; then echo "all checks passed"; else echo "$fails check(s) failed"; fi

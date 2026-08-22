@@ -13,14 +13,13 @@ whole file when none exists yet. The **chart** is a single issue with
 - **Child ticket**: an issue linked to the chart as a GitHub sub-issue (`gh
   api` on the sub-issues endpoint). Where sub-issues aren't enabled, add the
   child to a task list in the chart body and put `Part of #<chart>` at the
-  top of the child body. Kind labels: `cartographer:<kind>`
-  (`probe`/`question`/`research`/`task`). Once claimed, the ticket is
-  assigned to the driving dev.
-- **States**: `open` → `prepped` → `closed`, tracked via the issue's own
-  open/closed state plus a `cartographer:prepped` label for the middle
-  state, which GitHub has no native equivalent for. A `prepped` ticket also
-  carries a `carried: N` line in its body, incremented by Brief each time
-  the ticket falls below the cut line.
+  top of the child body. Kind is a `cartographer:<kind>` label, one per
+  ticket — `CHART.md` defines the kinds and what each means. Once claimed,
+  the ticket is assigned to the driving dev.
+- **States**: the issue's own open/closed state carries the outer two;
+  the middle state is a `cartographer:prepped` label, GitHub having no
+  native tri-state. `carried:` is an integer line in the ticket body.
+  `CHART.md` and `BRIEF.md` define the states and when `carried:` moves.
 - **Blocking**: GitHub's **native issue dependencies** — the canonical,
   UI-visible representation. Add an edge with `gh api --method POST
   repos/<owner>/<repo>/issues/<child>/dependencies/blocked_by -F
@@ -37,14 +36,14 @@ whole file when none exists yet. The **chart** is a single issue with
   `Blocked by` line), no assignee, and no `cartographer:prepped` label;
   first in chart order wins.
 - **Eligible query**: the same child set filtered to
-  `cartographer:prepped`, then to those whose body names an oracle role
-  confirmed attending the next sounding.
+  `cartographer:prepped`, then by the ticket body's oracle role — see
+  `BRIEF.md` for what makes a ticket eligible.
 - **Claim**: `gh issue edit <n> --add-assignee @me` — the session's first
   write.
 - **Prepped**: `gh issue edit <n> --add-label cartographer:prepped`, with
   the variant set link added to the ticket body.
 - **Sounded decision lines**: appended to the chart issue's Decisions so
   far (direct body edit, or `gh issue comment <chart>` cross-linked into
-  the body) carrying all three links — variant set, commit or PR, brief
-  file — as markdown links in the same line.
+  the body), with each required link as a markdown link in the same line.
+  `CHART.md` states which links a `sounded` line carries.
 - **Resolve**: `gh issue close <n>` once its decision line is written.
