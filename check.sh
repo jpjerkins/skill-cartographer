@@ -72,7 +72,7 @@ check "CHART.md constrains blocking edges"      'flat CHART.md | grep -q "\*\*ne
 check "CHART.md requires three links on sounded" 'flat CHART.md | grep -q "For .sounded. lines only, carry \*\*three\*\* links" && flat CHART.md | grep -q "the variant set that produced the reaction (evidence), the commit or PR that embodies it (embodiment), and the brief file whose .## Capture. section holds the quoted utterance"'
 check "CHART.md keeps the reversal rationale"   'flat CHART.md | grep -q "makes a later reversal tractable instead of archaeological"'
 check "CHART.md states the fog body convention" 'flat CHART.md | grep -q "Fog patches in \*Not yet specified\* name the ticket(s) that would sharpen them, written when that ticket is created" && flat CHART.md | grep -q "Fog isn.t a ticket, so it cannot hold a native relation — this is the one place a body convention is used"'
-check "CHART.md orders the charting session"    '[ "$(block CHART.md "^## Charting session order" "$" | grep -c "^[0-9]\. ")" -eq 6 ] && flatblock CHART.md "^## Charting session order" "$" | grep -q "1. Name the destination." && flatblock CHART.md "^## Charting session order" "$" | grep -q "6. Wire blocking edges in a second pass"'
+check "CHART.md orders the charting session"    '[ "$(block CHART.md "^## Charting session order" "$" | grep -c "^[0-9]\. ")" -eq 6 ] && flatblock CHART.md "^## Charting session order" "$" | grep -q "1. \*\*Name the destination — grill it out of the human" && flatblock CHART.md "^## Charting session order" "$" | grep -q "6. Wire blocking edges in a second pass"'
 check "CHART.md is within its sprawl cap"       '[ "$(wc -l < CHART.md)" -le 140 ] && [ "$(wc -l < CHART.md)" -ge 60 ]'
 
 # --- Task 5: PREP.md ---
@@ -151,6 +151,11 @@ check "tracker-local.md defines the three states"   'flat tracker-local.md | gre
 check "tracker-github.md names the four ticket kinds" 'flat tracker-github.md | grep -q "(.probe./.question./.research./.task.)"'
 check "tracker-local.md names the four ticket kinds"  'flat tracker-local.md | grep -q "(.probe./.question./.research./.task.)"'
 check "SPEC.md deliverables list the two seed templates" 'flat SPEC.md | grep -q "tracker-github.md" && flat SPEC.md | grep -q "tracker-local.md" && flat SPEC.md | grep -qi "only one of the two ever loads"'
+
+check "charting grills the destination out of the human" 'flatblock CHART.md "^## Charting session order" "$" | grep -q "grill it out of the human"'
+check "charting treats repo material as a hypothesis"  'flatblock CHART.md "^## Charting session order" "$" | grep -q "starting hypothesis to put to them and have confirmed"'
+check "charting grills the fog breadth-first"          'flatblock CHART.md "^## Charting session order" "$" | grep -q "grill again, breadth-first"'
+check "charting stops when no fog surfaces"            'flatblock CHART.md "^## Charting session order" "$" | grep -q "no chart is needed"'
 
 echo "---"
 if [ "$fails" -eq 0 ]; then echo "all checks passed"; else echo "$fails check(s) failed"; fi

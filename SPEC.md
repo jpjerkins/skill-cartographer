@@ -193,6 +193,30 @@ relation — this is the one place a body convention is used.
 
 ## 8. Phase specifications
 
+### 8.0 Chart
+
+Runs once per effort. §7 specifies the chart *artifact*; this specifies how it is
+made. Both grilling passes are load-bearing and neither is optional.
+
+1. **Name the destination — grill it out of the human.** Run `/grilling` and
+   `/domain-modeling` to pin down what this chart is finding its way to. **The
+   destination comes from the person, not from the repo.** A README, an existing
+   spec, or a directory name is a *starting hypothesis to put to them and have
+   confirmed*, never the answer. An agent that charts from inference produces a
+   chart made entirely of guesses whose author nobody remembers — the failure the
+   provenance model exists to prevent, committed before provenance is even in play.
+2. **Map the fog — grill again, breadth-first.** Fan out across the whole space
+   rather than deep on one thread, surfacing the open questions and the first work
+   takeable now. If no fog surfaces, the way is already clear and no chart is
+   needed: stop and ask the human how they want to proceed.
+3. **Fill the Oracle section** — who the authority actually is, proxy status,
+   cadence, budget in minutes, and the tiebreaker line.
+4. **Pick the sounding shape** from oracle reachability.
+5. **Create the tickets you can specify now**, then **wire blocking edges in a
+   second pass** — ids must exist before they can reference each other.
+
+Charting resolves nothing. It is one session's work and ends when the chart exists.
+
 ### 8.1 Prep
 
 **Radical variation on the axis under test. Everything off-axis held constant.**

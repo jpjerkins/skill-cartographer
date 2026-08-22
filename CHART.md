@@ -104,8 +104,16 @@ markdown because nobody answered.
 
 ## Charting session order
 
-1. Name the destination.
-2. Write the fog.
+1. **Name the destination — grill it out of the human.** Run `/grilling` and
+   `/domain-modeling` to pin down what this chart is finding its way to. The
+   destination comes from the person, not from the repo: treat a README, an
+   existing spec, or a directory name as a **starting hypothesis to put to
+   them and have confirmed**, never as the answer. Charting from inference
+   produces a chart made entirely of guesses whose author nobody remembers.
+2. **Map the fog — grill again, breadth-first.** Fan out across the whole
+   space rather than deep on one thread, surfacing the open questions and the
+   first work takeable now. If this surfaces no fog, the way is already clear
+   and no chart is needed: stop and ask the human how they want to proceed.
 3. Fill the Oracle section.
 4. Pick the sounding shape.
 5. Create the tickets you can specify now.
